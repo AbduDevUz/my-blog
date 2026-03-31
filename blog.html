@@ -2,6 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <link rel="icon" href="favicon.ico" sizes="any">
+        <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Azimov Abdulakhad">
         <meta name="description" content="Abdulahad Azimov blog — texnologiya va tajriba haqida yozuvlar.">
@@ -42,15 +44,8 @@
             <section class="about section" id="about">
                 <h2 class="section-title">Blog</h2>
 
-                <div class="bd-grid">
-                    <h4 class="sticky about__subtitle">2022</h4>
-                    <a href="blog-2022-08-01.html" class="itne-about-my about__subtitle">
-                        <div class="w-100">
-                            <h2 class="about__subtitle">01 August, 2022</h2>
-                            <p class="about__text">Men dasturiy ta'minot muhandisi bo'lish sayohatim.</p>           
-                        </div>  
-                    </a>
-                </div>
+                <p id="blog-posts-status" class="about__text" style="text-align: center;"></p>
+                <div id="blog-posts-root" class="bd-grid"></div>
             </section>
 
         </main>
@@ -62,5 +57,6 @@
 
         <script src="https://unpkg.com/scrollreveal"></script>
         <script src="assets/js/main.js"></script>
+        <script type="module" src="assets/js/blog-list.js"></script>
     </body>
 </html>

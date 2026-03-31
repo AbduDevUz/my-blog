@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Azimov Abdulakhad">
+        <meta name="description" content="Abdulahad Azimov — ish tajribasi, lavozimlar va kompaniyalar.">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/khan.css">
+        <!-- =====BOX ICONS===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <title>Experience | Abdulahad Azimov</title>
+
+        <style>
+            .timeline-item:first-child {
+                padding-top: 3px;
+            }
+
+            .timeline-item {
+                position: relative;
+                padding: 25px 0 20px 40px;
+            }
+            .timeline-item h5.item-period {
+                display: inline-block;
+                position: relative;
+                font-size: 12px;
+                font-weight: 500;
+                margin: 0 0 5px -40px;
+                color: #Fff;
+                background-color: #3e6ff4;
+                padding: 0 10px;
+                line-height: 23px;
+                border: 2px solid #007ced;
+                border-radius: 30px;
+            }
+            .timeline-item .item-company {
+                display: inline-block;
+                font-size: 12px;
+                color: #0d1730;
+                /* opacity: .7; */
+                margin-left: 5px;
+            }
+            .timeline-item .item-title {
+                font-size: 16px;
+                margin: 10px 0 7px;
+            }
+            .timeline-item p {
+                font-size: .92em;
+                /* color: #d5d5d5; */
+                margin: 0 0 10px;
+            }
+            .timeline-item:before {
+                content: '';
+                position: absolute;
+                display: block;
+                height: 100%;
+                background-color: #333;
+                width: 1px;
+                left: 15px;
+                bottom: 5px;
+            }
+            .timeline-item:after {
+                content: '';
+                position: absolute;
+                display: block;
+                height: 1px;
+                background-color: #333;
+                width: calc(100% - 15px);
+                left: 15px;
+                bottom: 3px;
+            }
+            .timeline-item:last-child::after {
+                display: none;
+            }
+
+            @media (min-width: 576px)
+            {
+                .col-sm-6 {
+                    -ms-flex: 0 0 50%;
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                }   
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <!--===== HEADER =====-->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="index.html" class="nav__logo">Abdu Dev</a>
+                </div>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="skills.html" class="nav__link">Skills</a></li>
+                        <li class="nav__item"><a href="experience.html" class="nav__link active">Experience</a></li>
+                        <li class="nav__item"><a href="work.html" class="nav__link">Work</a></li>
+                        <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+                        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+         
+            <!--===== SKILLS =====-->
+            <section class="skills section mt-6r" id="skills">
+                <h2 class="section-title">Experience</h2>
+
+                <div class="bd-grid">
+                    <div id="timeline_2" class="timeline clearfix">
+                        <div class="timeline-item clearfix">
+                            <h5 class="item-period current">2023-September - Current</h5>
+                            <span class="item-company">Asakabank <a href="https://asakabank.uz/" target="_blank" rel="noopener noreferrer">asakabank.uz</a></span>
+                            <h4 class="item-title">Frontend developer, Chief specialist</h4>
+                            <p>
+                                Department of Digital Technology Development, <br>
+                                Software Development Office, <br>
+                                Chief specialist
+                            </p>
+                        </div>
+
+                        <div class="timeline-item clearfix">
+                            <h5 class="item-period ">2020 - 2023-September</h5>
+                            <span class="item-company">WEB PRO SERVICE / <a href="https://goodone.uz/" target="_blank" rel="noopener noreferrer">goodone.uz</a></span>
+                            <h4 class="item-title">Frontend developer, TeamLead</h4>
+                            <p>My custom web system CRM, ERP. KPI... <br>
+                                First of all, I work with companies and create websites, and in the last 2 years I work with ERP, CRM and system automation meditsinskih Dannyx,</p>
+                        </div>
+
+                        <div class="timeline-item clearfix">
+                            <h5 class="item-period ">2019 - 2020</h5>
+                            <span class="item-company">WEB PRO SERVICE  / <a href="https://goodone.uz/" target="_blank" rel="noopener noreferrer">goodone.uz</a></span>
+                            <h4 class="item-title">Верстальщик, Frontend</h4>
+                            <p>Программирую различные сайты более 2 лет.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+
+        <footer class="footer">
+            <p class="footer__copy">&#169; 2026 abdulakhad.com</p>
+        </footer>
+
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>
