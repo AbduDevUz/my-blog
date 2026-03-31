@@ -42,10 +42,15 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
-  margin: var(--header-height) 0 0 0;
+  margin: 0;
+  min-height: 100%;
+  padding-top: var(--header-height);
+  display: flex;
+  flex-direction: column;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   color: var(--second-color);
@@ -114,6 +119,16 @@ img {
   z-index: var(--z-fixed);
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15);
+  /* Fixed header flex qatorida joy olmasin — sticky footer to‘g‘ri ishlashi uchun */
+  flex: 0 0 0;
+  height: 0;
+  overflow: visible;
+  align-self: stretch;
+}
+
+.l-main {
+  flex: 1 0 auto;
+  width: 100%;
 }
 
 /*===== NAV =====*/
@@ -381,6 +396,7 @@ img {
 
 /* ===== FOOTER =====*/
 .footer {
+  flex-shrink: 0;
   background-color: var(--second-color);
   color: #fff;
   text-align: center;

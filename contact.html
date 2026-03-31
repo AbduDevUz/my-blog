@@ -4,12 +4,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Azimov Abdulakhad">
-        <meta name="description" content="I am Azimov Abdulakhad, a 27-year-old Software Engineer from Fergana, Uzbekistan,">
+        <meta name="description" content="Abdulahad Azimov bilan bog'lanish — Telegram orqali xabar yuborish.">
         <link rel="stylesheet" href="assets/css/styles.css">
         <link rel="stylesheet" href="assets/css/khan.css">
         <!-- =====BOX ICONS===== -->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-        <title>Abdulahad's blog</title>
+        <title>Contact | Abdulahad Azimov</title>
     </head>
     <body>
         <!--===== HEADER =====-->
@@ -22,10 +22,12 @@
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
                         <li class="nav__item"><a href="skills.html" class="nav__link">Skills</a></li>
                         <li class="nav__item"><a href="experience.html" class="nav__link">Experience</a></li>
                         <li class="nav__item"><a href="work.html" class="nav__link">Work</a></li>
                         <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+                        <li class="nav__item"><a href="contact.html" class="nav__link active">Contact</a></li>
                     </ul>
                 </div>
 
@@ -36,30 +38,46 @@
         </header>
 
         <main class="l-main">
- 
-
             <!--===== CONTACT =====-->
             <section class="contact section" id="contact">
                 <h2 class="section-title">Contact</h2>
 
                 <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Enviar" class="contact__button button">
+                    <p class="about__text" style="margin-bottom: 1rem;">
+                        Formani to'ldirib yuborsangiz, xabar Telegram ilovasida ochiladi — u yerdan to'g'ridan-to'g'ri yozishingiz mumkin.
+                        Yoki <a href="https://t.me/tinch_dev" target="_blank" rel="noopener noreferrer">@tinch_dev</a> ga o'ting.
+                    </p>
+                    <form id="contact-form" class="contact__form">
+                        <input type="text" name="name" placeholder="Name" class="contact__input" required autocomplete="name">
+                        <input type="email" name="email" placeholder="Email" class="contact__input" required autocomplete="email">
+                        <textarea name="message" id="contact-message" cols="0" rows="10" class="contact__input" placeholder="Message" required></textarea>
+                        <button type="submit" class="contact__button button">Send</button>
                     </form>
                 </div>
             </section>
         </main>
 
+        <footer class="footer">
+            <p class="footer__copy">&#169; 2026 abdulakhad.com</p>
+        </footer>
 
-
-
-        <!--===== SCROLL REVEAL =====-->
         <script src="https://unpkg.com/scrollreveal"></script>
-
-        <!--===== MAIN JS =====-->
         <script src="assets/js/main.js"></script>
+        <script>
+            (function () {
+                var form = document.getElementById('contact-form');
+                if (!form) return;
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    var name = (form.elements.namedItem('name').value || '').trim();
+                    var email = (form.elements.namedItem('email').value || '').trim();
+                    var message = (form.elements.namedItem('message').value || '').trim();
+                    if (!name || !email || !message) return;
+                    var body = 'Salom! Portfolio saytidan xabar.\n\nIsm: ' + name + '\nEmail: ' + email + '\n\n' + message;
+                    var url = 'https://t.me/tinch_dev?text=' + encodeURIComponent(body);
+                    window.open(url, '_blank', 'noopener,noreferrer');
+                });
+            })();
+        </script>
     </body>
 </html>
