@@ -5,29 +5,35 @@
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin kirish | Abdu Dev</title>
-  <link rel="stylesheet" href="../assets/css/styles.css">
-  <link rel="stylesheet" href="../assets/css/khan.css">
+  <title>Kirish | Admin</title>
+  <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body>
-  <main class="l-main" style="padding-top: 2rem;">
-    <section class="contact section">
-      <h2 class="section-title">Admin</h2>
-      <p class="about__text" style="text-align: center; max-width: 28rem; margin: 0 auto 1rem;">
-        Email va parol — Supabase da yaratgan foydalanuvchi.
-        Saytni <code>http://localhost</code> orqali oching (faylni to‘g‘ridan ochishda login ba’zan ishlamaydi).
-      </p>
-      <div class="contact__container bd-grid" style="max-width: 400px;">
-        <form id="login-form" class="contact__form">
-          <input type="email" name="email" class="contact__input" placeholder="Email" required autocomplete="username">
-          <input type="password" name="password" class="contact__input" placeholder="Parol" required autocomplete="current-password">
-          <button type="submit" class="contact__button button">Kirish</button>
-        </form>
-        <p id="login-error" class="about__text" style="color: #c0392b; text-align: center;"></p>
-        <p class="about__text" style="text-align: center;"><a href="../index.html">Saytga qaytish</a></p>
+  <div class="admin-login-page">
+    <div class="admin-login-card">
+      <div class="admin-login-card__brand">
+        <strong>Abdu Dev</strong>
+        <span>Admin</span>
       </div>
-    </section>
-  </main>
+      <p class="admin-login-card__title">Hisobga kirish</p>
+      <form id="login-form" class="admin-form" style="margin-bottom: 0;">
+        <div>
+          <label class="admin-label" for="login-email">Email</label>
+          <input type="email" id="login-email" name="email" class="admin-input" required autocomplete="username">
+        </div>
+        <div>
+          <label class="admin-label" for="login-pass">Parol</label>
+          <input type="password" id="login-pass" name="password" class="admin-input" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="admin-btn admin-btn--primary" style="width: 100%; margin-top: 0.25rem;">Kirish</button>
+      </form>
+      <p id="login-error" class="admin-alert admin-alert--error" style="margin-top: 1rem; margin-bottom: 0;" hidden></p>
+      <p style="text-align: center; margin-top: 1.25rem; margin-bottom: 0;">
+        <a href="../index.html" style="color: var(--admin-accent); font-size: 0.875rem; font-weight: 500;">← Saytga qaytish</a>
+      </p>
+      <p class="admin-hint" style="text-align: center; margin-top: 1rem;">Saytni <code>http://127.0.0.1:…</code> orqali oching.</p>
+    </div>
+  </div>
   <script type="module" src="../assets/js/admin-login.js"></script>
 </body>
 </html>

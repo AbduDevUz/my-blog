@@ -5,51 +5,80 @@
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog boshqaruvi | Admin</title>
-  <link rel="stylesheet" href="../assets/css/styles.css">
-  <link rel="stylesheet" href="../assets/css/khan.css">
+  <title>Blog | Admin</title>
+  <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
-<body>
-  <main class="l-main admin-page">
-    <div class="admin-wrap">
-      <div class="admin-toolbar">
-        <h2 class="section-title" style="margin-bottom: 0.5rem;">Blog postlar</h2>
-        <div>
-          <button type="button" id="new-post-btn" class="button my-btn admin-btn-sm">Yangi</button>
-          <button type="button" id="logout-btn" class="button admin-btn-sm">Chiqish</button>
+<body class="admin-body">
+  <div class="admin-app">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar__brand">Abdu Dev <span>Admin panel</span></div>
+      <nav class="admin-sidebar__nav">
+        <a href="dashboard.html" class="is-active">Blog</a>
+        <a href="experience.html">Tajriba</a>
+        <a href="contact.html">Contact</a>
+        <a href="messages.html">Xabarlar</a>
+      </nav>
+      <div class="admin-sidebar__foot">
+        <a href="../index.html" target="_blank" rel="noopener noreferrer">Saytga o‘tish</a>
+        <a href="../blog.html" target="_blank" rel="noopener noreferrer">Blog ko‘rinishi</a>
+        <button type="button" class="admin-sidebar__logout" id="logout-btn">Chiqish</button>
+      </div>
+    </aside>
+    <div class="admin-main">
+      <div class="admin-content">
+        <div class="admin-panel">
+          <div class="admin-panel__head">
+            <h1 class="admin-panel__title">Blog yozuvlari</h1>
+            <button type="button" class="admin-btn admin-btn--primary" id="new-post-btn">+ Yangi post</button>
+          </div>
+
+          <div id="bucket-hint" class="admin-alert admin-alert--warn" hidden></div>
+          <div id="dash-error" class="admin-alert admin-alert--error" hidden></div>
+
+          <form id="post-form" class="admin-form">
+            <input type="hidden" id="editing-id" value="">
+            <div>
+              <label class="admin-label" for="f-title">Sarlavha *</label>
+              <input type="text" id="f-title" name="title" class="admin-input" placeholder="Post sarlavhasi" required>
+            </div>
+            <div>
+              <label class="admin-label" for="f-slug">Slug</label>
+              <input type="text" id="f-slug" name="slug" class="admin-input" placeholder="avtomatik (sarlavadan)">
+            </div>
+            <div>
+              <label class="admin-label" for="f-excerpt">Qisqa tavsif</label>
+              <textarea id="f-excerpt" name="excerpt" class="admin-textarea" rows="2" placeholder="Ro‘yxatda ko‘rinadi"></textarea>
+            </div>
+            <input type="hidden" id="cover-url-existing" value="">
+            <div>
+              <label class="admin-label">Rasm (maks. 3 MB)</label>
+              <div class="admin-file">
+                <input type="file" id="cover-file" name="cover_file" accept="image/jpeg,image/png,image/webp,image/gif">
+              </div>
+              <p class="admin-hint">JPG, PNG, WebP, GIF</p>
+              <div id="cover-preview-wrap" hidden>
+                <img id="cover-preview" class="admin-cover-preview" src="" alt="">
+              </div>
+              <label class="admin-check" id="remove-cover-label" hidden>
+                <input type="checkbox" id="remove-cover" name="remove_cover"> Mavjud rasmini olib tashlash
+              </label>
+            </div>
+            <div>
+              <label class="admin-label" for="f-body">Matn</label>
+              <textarea id="f-body" name="body" class="admin-textarea" rows="10" placeholder="Post matni"></textarea>
+            </div>
+            <label class="admin-check">
+              <input type="checkbox" name="published"> Chop etilgan (saytda ko‘rinadi)
+            </label>
+            <button type="submit" class="admin-btn admin-btn--primary" style="align-self: flex-start;">Saqlash</button>
+          </form>
+
+          <h2 class="admin-label" style="margin-bottom: 0.5rem; font-size: 0.875rem;">Barcha postlar</h2>
+          <div id="posts-list" class="admin-table-wrap"></div>
         </div>
       </div>
-
-      <p id="bucket-hint" class="about__text admin-bucket-hint" hidden></p>
-      <p id="dash-error" class="about__text" style="color: #c0392b;"></p>
-
-      <form id="post-form" class="admin-form contact__container bd-grid" style="max-width: 100%; margin-bottom: 2rem;">
-        <input type="hidden" id="editing-id" value="">
-        <input type="text" name="title" class="contact__input" placeholder="Sarlavha *" required>
-        <input type="text" name="slug" class="contact__input" placeholder="slug-masalan-shunday (bo‘sh qoldirsangiz sarlavadan)">
-        <textarea name="excerpt" class="contact__input" rows="2" placeholder="Qisqa tavsif (ro‘yxatda)"></textarea>
-        <input type="hidden" id="cover-url-existing" value="">
-        <label class="admin-file-label">
-          <span class="admin-file-label__text">Rasm (ixtiyoriy, JPG/PNG/WebP/GIF, maks. 3 MB)</span>
-          <input type="file" id="cover-file" name="cover_file" accept="image/jpeg,image/png,image/webp,image/gif" class="contact__input">
-        </label>
-        <div id="cover-preview-wrap" class="admin-cover-preview-wrap" hidden>
-          <img id="cover-preview" class="admin-cover-preview" src="" alt="Oldindan ko‘rish">
-        </div>
-        <label class="admin-check" id="remove-cover-label" hidden>
-          <input type="checkbox" id="remove-cover" name="remove_cover"> Mavjud rasmini olib tashlash
-        </label>
-        <textarea name="body" class="contact__input" rows="12" placeholder="To‘liq matn"></textarea>
-        <label class="admin-check">
-          <input type="checkbox" name="published"> Chop etilgan (saytda ko‘rinadi)
-        </label>
-        <button type="submit" class="contact__button button">Saqlash</button>
-      </form>
-
-      <div id="posts-list" class="admin-list"></div>
-      <p class="about__text" style="margin-top: 2rem;"><a href="../blog.html">Blog ko‘rinishi</a></p>
     </div>
-  </main>
+  </div>
   <script type="module" src="../assets/js/admin-dashboard.js"></script>
 </body>
 </html>

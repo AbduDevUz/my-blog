@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tajriba | Admin</title>
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-body">
+  <div class="admin-app">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar__brand">Abdu Dev <span>Admin panel</span></div>
+      <nav class="admin-sidebar__nav">
+        <a href="dashboard.html">Blog</a>
+        <a href="experience.html" class="is-active">Tajriba</a>
+        <a href="contact.html">Contact</a>
+        <a href="messages.html">Xabarlar</a>
+      </nav>
+      <div class="admin-sidebar__foot">
+        <a href="../index.html" target="_blank" rel="noopener noreferrer">Saytga o‘tish</a>
+        <a href="../experience.html" target="_blank" rel="noopener noreferrer">Tajriba sahifasi</a>
+        <button type="button" class="admin-sidebar__logout" id="logout-btn">Chiqish</button>
+      </div>
+    </aside>
+    <div class="admin-main">
+      <div class="admin-content">
+        <div class="admin-panel">
+          <div class="admin-panel__head">
+            <h1 class="admin-panel__title">Ish tajribasi (timeline)</h1>
+            <button type="button" class="admin-btn admin-btn--primary" id="new-exp-btn">+ Yangi qator</button>
+          </div>
+
+          <div id="exp-error" class="admin-alert admin-alert--error" hidden></div>
+
+          <form id="exp-form" class="admin-form">
+            <input type="hidden" id="exp-editing-id" value="">
+            <div>
+              <label class="admin-label" for="exp-sort">Tartib raqami</label>
+              <input type="number" id="exp-sort" name="sort_order" class="admin-input" value="1" min="0" step="1">
+              <p class="admin-hint">Kichik raqam yuqorida chiqadi (1, 2, 3…)</p>
+            </div>
+            <div>
+              <label class="admin-label" for="exp-period">Davr matni *</label>
+              <input type="text" id="exp-period" name="period_text" class="admin-input" placeholder="masalan: 2023-September - Current" required>
+            </div>
+            <label class="admin-check">
+              <input type="checkbox" id="exp-current" name="period_is_current"> Joriy ish (ko‘k belgi)
+            </label>
+            <div>
+              <label class="admin-label" for="exp-company">Kompaniya qatori (HTML)</label>
+              <textarea id="exp-company" name="company_html" class="admin-textarea" rows="3" placeholder='Asakabank &lt;a href="https://..." target="_blank" rel="noopener noreferrer"&gt;site.uz&lt;/a&gt;'></textarea>
+              <p class="admin-hint">Havola uchun &lt;a&gt; teglaridan foydalaning.</p>
+            </div>
+            <div>
+              <label class="admin-label" for="exp-title">Lavozim *</label>
+              <input type="text" id="exp-title" name="job_title" class="admin-input" required>
+            </div>
+            <div>
+              <label class="admin-label" for="exp-body">Tavsif (HTML)</label>
+              <textarea id="exp-body" name="body_html" class="admin-textarea" rows="5" placeholder="Yangi qator uchun &lt;br&gt;"></textarea>
+            </div>
+            <button type="submit" class="admin-btn admin-btn--primary" style="align-self: flex-start;">Saqlash</button>
+          </form>
+
+          <h2 class="admin-label" style="margin-bottom: 0.5rem; font-size: 0.875rem;">Ro‘yxat</h2>
+          <div id="exp-list" class="admin-table-wrap"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="../assets/js/admin-experience.js"></script>
+</body>
+</html>

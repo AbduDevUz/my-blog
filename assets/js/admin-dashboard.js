@@ -106,16 +106,19 @@ coverFile?.addEventListener('change', () => {
   const file = coverFile.files?.[0];
   if (!file) return;
   if (file.size > MAX_IMAGE_BYTES) {
+    errEl.hidden = false;
     errEl.textContent = 'Rasm 3 MB dan katta bo‘lmasligi kerak.';
     coverFile.value = '';
     return;
   }
   if (!isAllowedImageFile(file)) {
+    errEl.hidden = false;
     errEl.textContent = 'Faqat JPG, PNG, WebP yoki GIF (.jpg, .png, .webp, .gif).';
     coverFile.value = '';
     return;
   }
   errEl.textContent = '';
+  errEl.hidden = true;
   removeCover.checked = false;
   const r = new FileReader();
   r.onload = () => {
@@ -170,25 +173,32 @@ async function uploadCover(session, file) {
 }
 
 async function loadList() {
-  listEl.innerHTML = 'Yuklanmoqda…';
+  listEl.innerHTML = '<p class="admin-hint">Yuklanmoqda…</p>';
   const { data, error } = await supabase
     .from('posts')
     .select('id,title,slug,published,created_at')
     .order('created_at', { ascending: false });
 
   if (error) {
-    listEl.textContent = error.message;
+    listEl.innerHTML = '';
+    const p = document.createElement('p');
+    p.className = 'admin-alert admin-alert--error';
+    p.textContent = error.message;
+    listEl.appendChild(p);
     return;
   }
 
   listEl.innerHTML = '';
   if (!data.length) {
-    listEl.textContent = 'Postlar yo‘q.';
+    const p = document.createElement('p');
+    p.className = 'admin-hint';
+    p.textContent = 'Postlar yo‘q.';
+    listEl.appendChild(p);
     return;
   }
 
   const table = document.createElement('table');
-  table.className = 'admin-table';
+  table.className = 'admin-data-table';
   table.innerHTML =
     '<thead><tr><th>Sarlavha</th><th>Slug</th><th>Chop etilgan</th><th></th></tr></thead><tbody></tbody>';
   const tbody = table.querySelector('tbody');
@@ -196,14 +206,14 @@ async function loadList() {
   for (const row of data) {
     const tr = document.createElement('tr');
     tr.innerHTML =
-      '<td></td><td><code></code></td><td></td><td class="admin-actions"></td>';
+      '<td></td><td><code></code></td><td></td><td class="admin-data-table__actions"></td>';
     tr.cells[0].textContent = row.title;
     tr.cells[1].querySelector('code').textContent = row.slug;
     tr.cells[2].textContent = row.published ? 'Ha' : 'Yo‘q';
 
     const editBtn = document.createElement('button');
     editBtn.type = 'button';
-    editBtn.className = 'button admin-btn-sm';
+    editBtn.className = 'admin-btn admin-btn--ghost admin-btn--sm';
     editBtn.textContent = 'Tahrir';
     editBtn.addEventListener('click', () => {
       editingIdInput.value = row.id;
@@ -233,7 +243,7 @@ async function loadList() {
 
     const delBtn = document.createElement('button');
     delBtn.type = 'button';
-    delBtn.className = 'button my-btn admin-btn-sm';
+    delBtn.className = 'admin-btn admin-btn--danger admin-btn--sm';
     delBtn.textContent = 'O‘chirish';
     delBtn.addEventListener('click', async () => {
       if (!confirm('O‘chirilsinmi?')) return;
@@ -266,6 +276,7 @@ form?.title?.addEventListener('blur', () => {
 form?.addEventListener('submit', async (e) => {
   e.preventDefault();
   errEl.textContent = '';
+  errEl.hidden = true;
 
   const session = await requireAuth();
   if (!session) return;
@@ -280,6 +291,7 @@ form?.addEventListener('submit', async (e) => {
   if (file) {
     const up = await uploadCover(session, file);
     if (up.error) {
+      errEl.hidden = false;
       errEl.textContent = up.error.message;
       return;
     }
@@ -296,6 +308,7 @@ form?.addEventListener('submit', async (e) => {
   };
 
   if (!payload.title || !payload.slug) {
+    errEl.hidden = false;
     errEl.textContent = 'Sarlavha va slug majburiy.';
     return;
   }
@@ -305,12 +318,14 @@ form?.addEventListener('submit', async (e) => {
   if (id) {
     const { error } = await supabase.from('posts').update(payload).eq('id', id);
     if (error) {
+      errEl.hidden = false;
       errEl.textContent = error.message;
       return;
     }
   } else {
     const { error } = await supabase.from('posts').insert(payload);
     if (error) {
+      errEl.hidden = false;
       errEl.textContent = error.message;
       return;
     }
@@ -336,6 +351,7 @@ document.getElementById('new-post-btn')?.addEventListener('click', () => {
 
 (async () => {
   if (SUPABASE_ANON_KEY.includes('BU_YERGA')) {
+    errEl.hidden = false;
     errEl.textContent = 'supabase-config.js da anon kalitni kiriting.';
     return;
   }

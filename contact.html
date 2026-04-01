@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Azimov Abdulakhad">
-        <meta name="description" content="Abdulahad Azimov bilan bog'lanish — Telegram orqali xabar yuborish.">
+        <meta name="description" content="Abdulahad Azimov bilan bog‘lanish — xabar yuborish (sayt orqali + Telegram).">
         <link rel="stylesheet" href="assets/css/styles.css">
         <link rel="stylesheet" href="assets/css/khan.css">
         <!-- =====BOX ICONS===== -->
@@ -43,9 +43,9 @@
                 <h2 class="section-title">Contact</h2>
 
                 <div class="contact__container bd-grid">
+                    <p class="about__text" id="contact-intro" style="margin-bottom: 0.5rem; white-space: pre-line;">Formani yuborsangiz, xabar avvalo sayt orqali saqlanadi; Telegram bo‘lsa, yangi oynada ochiladi — u yerdan ham yozishingiz mumkin.</p>
                     <p class="about__text" style="margin-bottom: 1rem;">
-                        Formani to'ldirib yuborsangiz, xabar Telegram ilovasida ochiladi — u yerdan to'g'ridan-to'g'ri yozishingiz mumkin.
-                        Yoki <a href="https://t.me/tinch_dev" target="_blank" rel="noopener noreferrer">@tinch_dev</a> ga o'ting.
+                        Yoki <a href="https://t.me/tinch_dev" id="contact-telegram-link" target="_blank" rel="noopener noreferrer">@tinch_dev</a> ga o‘ting.
                     </p>
                     <form id="contact-form" class="contact__form">
                         <input type="text" name="name" placeholder="Name" class="contact__input" required autocomplete="name">
@@ -53,6 +53,7 @@
                         <textarea name="message" id="contact-message" cols="0" rows="10" class="contact__input" placeholder="Message" required></textarea>
                         <button type="submit" class="contact__button button">Send</button>
                     </form>
+                    <p id="contact-form-status" class="about__text" style="margin-top: 1rem; display: none;" role="status" aria-live="polite"></p>
                 </div>
             </section>
         </main>
@@ -63,21 +64,6 @@
 
         <script src="https://unpkg.com/scrollreveal"></script>
         <script src="assets/js/main.js"></script>
-        <script>
-            (function () {
-                var form = document.getElementById('contact-form');
-                if (!form) return;
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    var name = (form.elements.namedItem('name').value || '').trim();
-                    var email = (form.elements.namedItem('email').value || '').trim();
-                    var message = (form.elements.namedItem('message').value || '').trim();
-                    if (!name || !email || !message) return;
-                    var body = 'Salom! Portfolio saytidan xabar.\n\nIsm: ' + name + '\nEmail: ' + email + '\n\n' + message;
-                    var url = 'https://t.me/tinch_dev?text=' + encodeURIComponent(body);
-                    window.open(url, '_blank', 'noopener,noreferrer');
-                });
-            })();
-        </script>
+        <script type="module" src="assets/js/contact-page.js"></script>
     </body>
 </html>

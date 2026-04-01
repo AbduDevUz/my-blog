@@ -18,8 +18,10 @@ checkSession();
 form?.addEventListener('submit', async (e) => {
   e.preventDefault();
   errEl.textContent = '';
+  errEl.hidden = true;
 
   if (SUPABASE_ANON_KEY.includes('BU_YERGA')) {
+    errEl.hidden = false;
     errEl.textContent = 'Avval supabase-config.js da anon kalitni qo‘ying.';
     return;
   }
@@ -29,6 +31,7 @@ form?.addEventListener('submit', async (e) => {
 
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) {
+    errEl.hidden = false;
     errEl.textContent = error.message;
     return;
   }
